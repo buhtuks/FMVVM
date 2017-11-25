@@ -274,3 +274,4 @@ var mainPresenter: Presenter<MainViewModel.AnyPresentable> {
 * "Fractal MVVM in Swift", Sergey Anishchanka, 2016-04-16 CocoaHeadsBY meetup
 * "Presenting Things in Swift", Denis Fileev, 2015-12-12 CocoaHeadsBY meetup
 * https://github.com/ReactiveCocoa/ReactiveSwift
+* https://medium.com/design-x-code/elmification-of-swift-af14b7f92b30
