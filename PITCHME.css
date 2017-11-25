@@ -1,0 +1,16 @@
+.reveal section img {
+  border: 0;
+  box-shadow: none;
+}
+
+.reveal pre {
+  box-shadow: 0 0 0px rgba(0,0,0,0);
+}
+
+.hljs {
+  background: rgba(0,0,0,0);
+}
+
+.hljs-comment {
+  color: #52BE5C;
+}
