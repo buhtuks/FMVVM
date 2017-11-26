@@ -243,6 +243,21 @@ final class TextViewModel {
     }
     struct Context {}
 }
+
+extension TextViewModel: Presentable {
+    typealias Presenters = TextViewModelPresenterContainer
+
+    var present: (TextViewModelPresenterContainer) -> Disposable? {
+        return { presenters in 
+            return CompositeDisposable([
+                presenters.titlePresenter <~ "Text",
+                presenters.textPresenter.serial().optional() <~ self.text,
+                presenters.textInputPresenter <~ self.textInput,
+                presenters.backActionPresenter <~ self.backAction
+                ])
+        }
+    }
+}
 ```
 
 +++
