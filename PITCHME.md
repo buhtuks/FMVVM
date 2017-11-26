@@ -262,6 +262,19 @@ extension TextViewModel: Presentable {
 
 +++
 
+### PRESENTERS CONTIANER
+
+```Swift
+protocol TextViewModelPresenterContainer {
+    var titlePresenter: Presenter<String> { get }
+    var textPresenter: Presenter<String> { get }
+    var textInputPresenter: Presenter<(String?) -> ()> { get }
+    var backActionPresenter: Presenter<Action<(), (), NoError>> { get }
+}
+```
+
++++
+
 * ``RootViewModel`` have same structure as children
 * Create and manage child view model lifetime the way it fits a business case
 * Disposables compose all the way up from leafs into the root disposable
