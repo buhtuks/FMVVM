@@ -213,6 +213,40 @@ let childPresenter = Presenter<Child>.UI {
 
 +++
 
+<style>
+.reveal pre {
+  line-height: 1.0em;
+  font-size: 0.4em
+}
+  
+.reveal pre code {
+  max-height: 700px;
+}
+</style>
+
+```Swift
+final class TextViewModel {
+    let text: Property<String?>
+    let backAction: Action<(), (), NoError>
+    let textInput: (String?) -> ()
+
+    init(dependencies: Dependencies, context: Context) {
+        let text = MutableProperty<String?>(nil)
+        let input = { text.value = $0 }
+        self.textInput = input
+        self.backAction = dependencies.backAction
+        self.text = Property(text)
+    }
+    
+    struct Dependencies {
+        let backAction: Action<(), (), NoError>
+    }
+    struct Context {}
+}
+```
+
++++
+
 * ``RootViewModel`` have same structure as children
 * Create and manage child view model lifetime the way it fits a business case
 * Disposables compose all the way up from leafs into the root disposable
