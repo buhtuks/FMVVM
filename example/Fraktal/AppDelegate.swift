@@ -36,7 +36,7 @@ extension AppDelegate: AnyPresentableSourceType {
             window.rootViewController = UINavigationController(rootViewController: main)
             window.makeKeyAndVisible()
             main.loadViewIfNeeded()
-            return viewmodel <- main
+            return viewmodel <> main
         }
     }
 

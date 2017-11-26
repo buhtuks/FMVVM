@@ -161,10 +161,10 @@ final class AnyPresentableType<Presenters>: AnyPresentableContvertable {
 extension AnyPresentableType: Presentable {
 }
 
-infix operator <-
+infix operator <>
 infix operator <~
 
-func <-<Target : Presentable, Source : AnyPresentableSourceType>(target: Target, source: Source) -> Disposable?
+func <><Target : Presentable, Source : AnyPresentableSourceType>(target: Target, source: Source) -> Disposable?
     where Target.Presenters == Source.Presenters {
     return target.present(source.presenters)
 }

@@ -65,7 +65,7 @@ extension MainViewController: AnyPresentableSourceType {
                 as! TextViewController
             view.loadViewIfNeeded()
             selfStrong.navigationController?.pushViewController(view, animated: true)
-            return viewmodel <- view
+            return viewmodel <> view
         }
     }
 
@@ -77,7 +77,7 @@ extension MainViewController: AnyPresentableSourceType {
                 as! CounterViewController
             view.loadViewIfNeeded()
             selfStrong.navigationController?.pushViewController(view, animated: true)
-            return viewmodel <- view
+            return viewmodel <> view
         }
     }
 
