@@ -331,6 +331,61 @@ var mainPresenter: Presenter<MainViewModel.AnyPresentable> {
 
 +++
 
+<style>
+.reveal pre {
+  line-height: 1.0em;
+  font-size: 0.34em
+}
+  
+.reveal pre code {
+  max-height: 700px;
+}
+</style>
+
+```Swift
+final class TextViewController: UIViewController {
+    @IBOutlet var textField: UITextField?
+    @IBOutlet var textView: UITextView?
+    @IBOutlet var backButtonItem: UIBarButtonItem?
+}
+
+extension TextViewController: AnyPresentableSourceType {
+    var presenters: TextViewModelPresenterContainer {
+        return TextViewModelPresenterContainerImpl(...)
+    }
+
+    typealias Presenters = TextViewModelPresenterContainer
+
+    var textPresenter: Presenter<String> {
+        return Presenter.UI { [weak self] in
+            guard let textView = self?.textView else { assertionFailure(); return nil }
+            textView.text = $0
+            return nil
+        }
+    }
+
+    var backActionPresenter: Presenter<Action<(), (), NoError>> {
+        return Presenter.UI { value in
+            guard let backButtonItem = self.backButtonItem else { assertionFailure(); return nil }
+            backButtonItem.reactive.pressed = CocoaAction(value)
+            return nil
+        }
+    }
+
+    var textInputPresenter: Presenter<(String?) -> ()> {
+        return Presenter.UI {
+            guard let textField = self.textField else { assertionFailure(); return nil }
+            return textField
+                .reactive
+                .continuousTextValues
+                .observeValues($0)
+        }
+    }
+}
+```
+
++++
+
 ## REFERENCES
 
 * "Fractal MVVM in Swift", Sergey Anishchanka, 2016-04-16 CocoaHeadsBY meetup
