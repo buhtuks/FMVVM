@@ -1,9 +1,9 @@
 //
 //  Presenters.swift
-//  AGU
+//  Fraktal
 //
-//  Created by Dmitry Levsevich on 12/21/16.
-//  Copyright © 2016 Montex. All rights reserved.
+//  Created by Dmitry Levsevich on 3/18/17.
+//  Copyright © 2017 Home. All rights reserved.
 //
 
 import Foundation
